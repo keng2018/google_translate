@@ -1,0 +1,46 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Google翻译TK参数测试</title>
+	<link href="boot/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<script type="text/javascript">
+	function VL() {
+		var a = document.getElementById('reviewww').value
+		document.getElementById('dong').value = '重写中，请稍后...';
+		var xmlhttp = new XMLHttpRequest();
+
+		url = '/google_translate/g/index.php?q='+a;
+
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4) {
+				if (xmlhttp.status == 200) {
+					document.getElementById('mydiv').innerHTML = xmlhttp.responseText;
+					document.getElementById('dong').value = '开始重写';
+				}
+			}
+		}
+	}
+
+	function QK() {
+		document.getElementById('reviewww').value = "";
+	}
+
+</script>
+
+<body>
+	<div class="container">
+		<textarea id="reviewww" class="form-control mb-2 mt-5" rows="10"></textarea>
+		<input id="dong" name="Query" type="button" value="开始重写" onclick="VL();" class="btn btn-primary">
+		<input type="button" value="清空输入框" onclick="QK();" class="btn btn-light">
+		<div id="mydiv" class="mt-5"></div>
+	</div>
+</body>
+
+</html>
