@@ -15,7 +15,5 @@ $target = 'zh-cn';
 $trans = new GoogleTranslate();
 $res = $trans->translate($source,$target,$result);
 
-echo $text;
-
 echo $res;
 ?>
