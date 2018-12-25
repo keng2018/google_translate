@@ -12,10 +12,11 @@
 		document.getElementById('dong').value = '重写中，请稍后...';
 		var xmlhttp = new XMLHttpRequest();
 
-		url = '/weiyuanchuang/g/index.php?q='+a;
+		url = 'g/index.php';
 
-		xmlhttp.open("GET", url, true);
-		xmlhttp.send();
+		xmlhttp.open("post", url, true);
+		// xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
+		xmlhttp.send('q='+a);
 
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4) {
