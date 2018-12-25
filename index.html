@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<title>Google翻译TK参数测试</title>
 	<link href="boot/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -13,7 +12,7 @@
 		document.getElementById('dong').value = '重写中，请稍后...';
 		var xmlhttp = new XMLHttpRequest();
 
-		url = '/google_translate/g/index.php?q='+a;
+		url = '/weiyuanchuang/g/index.php?q='+a;
 
 		xmlhttp.open("GET", url, true);
 		xmlhttp.send();
