@@ -21,7 +21,7 @@
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4) {
 				if (xmlhttp.status == 200) {
-					document.getElementById('mydiv').innerHTML = xmlhttp.responseText.replace(/\n/g,'<br>');
+					document.getElementById('mydiv').innerHTML = xmlhttp.responseText;
 					document.getElementById('dong').value = '开始重写';
 				}
 			}
@@ -32,14 +32,32 @@
 		document.getElementById('reviewww').value = "";
 	}
 
+	function FZ(){
+		var text = document.getElementById('mydiv');
+		text.select();
+		document.execCommand('Copy');
+		document.getElementById('fuzhi').value = '√ 复制成功';
+		setTimeout(function(){document.getElementById('fuzhi').value = '复制全文';},1000);
+	}
+
 </script>
 
 <body>
-	<div class="container">
-		<textarea id="reviewww" class="form-control mb-2 mt-5" rows="10"></textarea>
-		<input id="dong" name="Query" type="button" value="开始重写" onclick="VL();" class="btn btn-primary">
-		<input type="button" value="清空输入框" onclick="QK();" class="btn btn-light">
-		<div id="mydiv" class="mt-5"></div>
+	<div class="container mt-5 mb-5">
+		<div class="row">
+
+			<div class="col">
+				<textarea id="reviewww" class="form-control mb-2" rows="10"></textarea>
+				<input id="dong" name="Query" type="button" value="开始重写" onclick="VL();" class="btn btn-primary">
+				<input type="button" value="清空输入框" onclick="QK();" class="btn btn-light">
+			</div>
+
+			<div class="col">
+				<textarea id="mydiv" class="mb-2 form-control" rows="10"></textarea>
+				<input id="fuzhi" type="button" value="复制全文" onclick="FZ();" class="btn btn-primary">
+			</div>
+
+		</div>
 	</div>
 </body>
 
