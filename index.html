@@ -1,64 +1,58 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="zh-cn">
 <head>
-	<meta charset="utf-8">
-	<title>文章伪原创 - by wuweihua</title>
-	<link href="boot/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>文章伪原创 - by wuweihua</title>
+    <link href="boot/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <script type="text/javascript">
-	function VL() {
-		var a = document.getElementById('reviewww').value
-		document.getElementById('dong').value = '重写中，请稍后...';
-		var xmlhttp = new XMLHttpRequest();
+    function VL() {
+        var a = document.getElementById('reviewww').value
+        document.getElementById('dong').value = '重写中，请稍后...';
+        var xmlhttp = new XMLHttpRequest();
 
-		url = 'g/index.php';
+        url = 'g/index.php';
 
-		xmlhttp.open("post", url, true);
-		xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
-		xmlhttp.send('q='+a);
+        xmlhttp.open("post", url, true);
+        xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
+        xmlhttp.send('q='+a);
 
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4) {
-				if (xmlhttp.status == 200) {
-					document.getElementById('mydiv').innerHTML = xmlhttp.responseText;
-					document.getElementById('dong').value = '开始重写';
-				}
-			}
-		}
-	}
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4) {
+                if (xmlhttp.status == 200) {
+                    document.getElementById('mydiv').innerHTML = xmlhttp.responseText;
+                    document.getElementById('dong').value = '开始重写';
+                }
+            }
+        }
+    }
 
-	function QK() {
-		document.getElementById('reviewww').value = "";
-	}
+    function QK() {
+        document.getElementById('reviewww').value = "";
+    }
 
-	function FZ(){
-		var text = document.getElementById('mydiv');
-		text.select();
-		document.execCommand('Copy');
-		document.getElementById('fuzhi').value = '√ 复制成功';
-		setTimeout(function(){document.getElementById('fuzhi').value = '复制全文';},1000);
-	}
-
+    function FZ(){
+        var text = document.getElementById('mydiv');
+        text.select();
+        document.execCommand('Copy');
+        document.getElementById('fuzhi').value = '√ 复制成功';
+        setTimeout(function(){document.getElementById('fuzhi').value = '复制全文';},1000);
+    }
 </script>
 
 <body>
-	<div class="container mt-5 mb-5">
-		<div class="row">
-
-			<div class="col">
-				<textarea id="reviewww" class="form-control mb-2" rows="10"></textarea>
-				<input id="dong" name="Query" type="button" value="开始重写" onclick="VL();" class="btn btn-primary">
-				<input type="button" value="清空输入框" onclick="QK();" class="btn btn-light">
-			</div>
-
-			<div class="col">
-				<textarea id="mydiv" class="mb-2 form-control" rows="10"></textarea>
-				<input id="fuzhi" type="button" value="复制全文" onclick="FZ();" class="btn btn-primary">
-			</div>
-
-		</div>
-	</div>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col">
+                <textarea class="form-control mb-2" id="reviewww" rows="20"></textarea>
+                <input class="btn btn-primary" id="dong" name="Query" onclick="VL();" type="button" value="开始重写">
+                <input class="btn btn-light" onclick="QK();" type="button" value="清空输入框">
+            </div>
+            <div class="col">
+                <textarea class="mb-2 form-control" id="mydiv" rows="20"></textarea>
+                <input class="btn btn-primary" id="fuzhi" onclick="FZ();" type="button" value="复制全文">
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
